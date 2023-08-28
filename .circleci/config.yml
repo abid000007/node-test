@@ -3,12 +3,12 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/node:16
+      - image: cimg/node
     steps:
       - checkout
       - run:
           name: Install Dependencies
-          command: npm i
+          command: npm install
       - run:
           name: Start Application
           command: npm start
