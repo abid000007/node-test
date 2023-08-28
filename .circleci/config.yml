@@ -5,13 +5,10 @@ jobs:
     docker:
       - image:  circleci/node:4.8.2
     steps:
-      - checkout
-      - run:
-          name: Install Dependencies
-          command: npm install
+      - checkout 
       - run:
           name: Start Application
-          command: npm start
+          command: docker-compose up
 
 workflows:
   version: 2
