@@ -8,10 +8,10 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: npm install
+          command: npm install && npm run build
       - run:
           name: Start Application
-          command: npm start
+          command: npm index.js
 
 workflows:
   version: 2
