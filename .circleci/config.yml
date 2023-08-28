@@ -8,3 +8,7 @@ jobs:
    - check out 
    - npm i 
    - npm start  
+  workflow:
+   run_now:
+    jobs:
+      - build 
