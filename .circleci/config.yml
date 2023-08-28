@@ -8,8 +8,7 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: npm install && npm run build
-      - run:
+          command: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash && source ~/.bashrc && nvm install 14 && cd multi && npm install
           name: Start Application
           command: npm index.js
 
