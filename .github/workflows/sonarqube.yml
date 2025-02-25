@@ -3,7 +3,7 @@ name: CI/CD with Build Status to Pushgateway
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -15,17 +15,16 @@ jobs:
       - name: Simulate a build
         id: build-step
         run: |
-          echo "Running a fake build..."
-          exit 0 # Replace with your actual build commands
+          echo "hi"
+          exit 0
 
       - name: Push build status to Pushgateway
         if: always()
         run: |
-          sudo apt-get update && sudo apt-get install -y curl
           if [ "${{ job.status }}" = "success" ]; then
             STATUS=1
           else
             STATUS=0
           fi
-          echo "build_status{repository=\"${{ github.repository }}\",branch=\"${{ github.ref_name }}\",run_id=\"${{ github.run_id }}\"} $STATUS" | \
+          echo "build_status{repository=\"${{ github.repository }}\",branch=\"${{ github.ref_name }}\",run_id=\"${{ github.run_id }}\",status=\"$STATUS\"} $STATUS" | \
           curl --data-binary @- http://af14c7555b43943c897f47b84d25f423-1894518563.us-east-1.elb.amazonaws.com:9091/metrics/job/build_pipeline
