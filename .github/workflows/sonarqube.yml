@@ -27,4 +27,4 @@ jobs:
             STATUS=0
           fi
           echo "build_status{repository=\"${{ github.repository }}\",branch=\"${{ github.ref_name }}\",run_id=\"${{ github.run_id }}\",status=\"$STATUS\"} $STATUS" | \
-          curl --data-binary @- http://af14c7555b43943c897f47b84d25f423-1894518563.us-east-1.elb.amazonaws.com:9091/metrics/job/build_pipeline
+          curl --data-binary @- http://a972f5297c25a49a4afdc21fa2d84a58-2001555871.us-west-2.elb.amazonaws.com:9091/metrics/job/build_pipeline
